@@ -51,4 +51,10 @@ class ParamsGameController < ApplicationController
     render "segment_params.json.jbuilder"
   end
 
+  def secret_game_model
+    input_value = params["secret_info"]
+    @output = "The secret info is #{input_value}"
+    render "secret_game.json.jbuilder"
+  end
+
 end
