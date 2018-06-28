@@ -22,12 +22,33 @@ class ParamsGameController < ApplicationController
     elsif user_input2.to_i < correct_num.to_i
       @game = "Your guess is too low!"
       puts @game
-    else user_input2.to_i > correct_num.to_i
+    else
       @game = "Your guess is too high!"
       puts @game
     end
 
     render "params_game_model.json.jbuilder"
+  end
+
+
+  def segment_params
+    @game_message = "Enter a number between 1-100, see if you can guess correctly!"
+    user_input2 = params["number"]
+    correct_num = 27
+
+    if user_input2.to_i == correct_num.to_i
+      @game = "You guessed correctly!"
+      puts @game
+    elsif user_input2.to_i < correct_num.to_i
+      @game = "Your guess is too low!"
+      puts @game
+    else
+      @game = "Your guess is too high!"
+      puts @game
+      
+    end
+
+    render "segment_params.json.jbuilder"
   end
 
 end
