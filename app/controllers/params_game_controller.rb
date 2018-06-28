@@ -52,9 +52,20 @@ class ParamsGameController < ApplicationController
   end
 
   def secret_game_model
-    input_value = params["secret_info"]
-    @output = "The secret info is #{input_value}"
+    user_input2 = params["number_guess"]
+    @game_message = "Enter a number between 1-100, see if you can guess correctly!"
+    correct_num = 27
+
+    if user_input2.to_i == correct_num.to_i
+      @game = "You guessed correctly!"
+      puts @game
+    elsif user_input2.to_i < correct_num.to_i
+      @game = "Your guess is too low!"
+      puts @game
+    else
+      @game = "Your guess is too high!"
+      puts @game
+    end
     render "secret_game.json.jbuilder"
   end
-
 end
